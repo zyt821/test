@@ -48,12 +48,12 @@ cron设置30min循环
 
 const jsname = '葱花视频'
 const $ = Env(jsname)
-const logs = $.getdata('logbutton'); //0为关闭日志，1为开启,默认为0
-const notifyInterval = $.getdata('tzbutton'); //0为关闭通知，1为所有通知,默认为0
+const logs = 1; //0为关闭日志，1为开启
+const notifyInterval = 1 //0为关闭通知，1为所有通知
 
 let task = '';
 let tz = '';
-let uid = $.getdata('uid')
+let uid = process.env.CHGETBODY_UID
 let headerVal = {
   'User-Agent': `cong hua shi pin/1.4.6 (iPhone; iOS 14.1; Scale/2.00)`,
   'Accept': `*/*`,
@@ -89,11 +89,14 @@ let READBODY = [];
 let readscore = 0;
 let sharescore = 0;
 
-let bodys = $.getdata("chgetbody_video");
-let bodys2 = $.getdata("chgetbody_share");
+let bodys = process.env.CHGETBODY_VIDEO;
+let bodys2 = process.env.CHGETBODY_SHARE;
+let bodys3 = process.env.CHGETBODY_TASKCENTER;
+let bodys4 = process.env.CHGETBODY_SHAREREWARD;
+let bodys5 = process.env.CHGETBODY_TIMERED;
 let indexLast = $.getdata('chgetbody_video_index');
 
-$.begin = indexLast ? parseInt(indexLast, 10) : 1;
+$.begin = indexLast ? parseInt(indexLast, 10) : 0;
 
 
 if (!(bodys && bodys != '')) {
@@ -108,6 +111,9 @@ if (!(bodys2 && bodys2 != '')) {
 
 readbodyVal = bodys.split('#');
 sharebodyVal = bodys2.split('#');
+taskcenterbodyVal = bodys3.split('#');
+sharerewardbodyVal = bodys4.split('#');
+timeredbodyVal = bodys5.split('#');
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -124,7 +130,7 @@ Object.keys(sharebodyVal).forEach((item) => {
 })
 
 
-if ($.isNode()) {
+//if ($.isNode()) {
 
   Object.keys(taskcenterbodyVal).forEach((item) => {
     if (taskcenterbodyVal[item]) {
@@ -143,20 +149,28 @@ if ($.isNode()) {
       timeredbodyArr.push(timeredbodyVal[item])
     }
   });
-} else {
+//} else {
   //readbodyArr.push($.getdata('chgetbody_video'));
   //sharebodyArr.push($.getdata('chgetbody_share'));
-  taskcenterbodyArr.push($.getdata('chgetbody_taskcenter'));
-  sharerewardbodyArr.push($.getdata('chgetbody_sharereward'));
-  timeredbodyArr.push($.getdata('chgetbody_timered'));
-}
-
+ // taskcenterbodyArr.push(process.env.CHGETBODY_TASKCENTER);
+ // sharerewardbodyArr.push(process.env.CHGETBODY_SHAREREWARD);
+  //timeredbodyArr.push(process.env.CHGETBODY_TIMERED);
+//}
+//console.log(readbodyArr)
+//console.log(`\n`)
+//console.log(sharebodyArr)
+ // console.log(`\n`)
+//console.log(taskcenterbodyArr)
+////console.log(`\n`)
+//console.log(sharerewardbodyArr)
+//  console.log(`\n`)
+//console.log(timeredbodyArr)
+//console.log(`\n`)
 
 ////////////////////////////////////////////////////////////////////////
 
 
 !(async () => {
-     await Jsname()
   O = (`🥦${jsname}任务执行通知🔔`);
   taskcenterbodyVal = taskcenterbodyArr[0];
   timeredbodyVal = timeredbodyArr[0];
@@ -289,10 +303,9 @@ function share(task) {
         headers: headerVal,
       }
       $.post(shareurl, async (error, resp, data) => {
-        let share = JSON.parse(data);
+        //let share = JSON.parse(data);
         //$.log(`\n本次阅读获得${share.data.score}个金币🏅\n`);
         //sharescore += share.data.score;
-        if(logs==1) $.log(data)
         $.log(`分享任务奖励请求：成功🎉`);
         resolve()
       })
@@ -312,11 +325,9 @@ function sharereward(task) {
       $.post(sharerewardurl, async (error, resp, data) => {
         let sharereward = JSON.parse(data);
         if (sharereward.code === 1007) {
-          if(logs==1) $.log(data)
           $.log(`【分享奖励】：账号异常❌\n请评论,点赞,上传视频...并禁用脚本观察`)
           tz += `【分享奖励】：账号异常❌\n`;
         } else {
-          if(logs==1) $.log(data)
           $.log(`本次任务获得${sharereward.data.score}个金币🏅`);
           tz += `【分享任务】：${sharescore}个金币\n`;
           sharescore += sharereward.data.score;
