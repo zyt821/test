@@ -24,5 +24,5 @@ jobs:
         with:
           source_repo: "https://github.com/fenglinefg/hello-world.git"
           source_branch: "main"
-          destination_branch: "mymain"
+          destination_branch: "sync-fenglinefg-helloworld"
           github_token: ${{ secrets.ZYT }}
