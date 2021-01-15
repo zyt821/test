@@ -22,7 +22,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/ZhiYi-N/jd_scripts.git"
+          source_repo: "https://github.com/ZhiYi-N/script.git"
           source_branch: "master"
           destination_branch: "sync-ZhiYi-N-jd_scripts"
           github_token: ${{ secrets.ZYT }}
