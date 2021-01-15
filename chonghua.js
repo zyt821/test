@@ -303,9 +303,10 @@ function share(task) {
         headers: headerVal,
       }
       $.post(shareurl, async (error, resp, data) => {
-        //let share = JSON.parse(data);
+        let share = JSON.parse(data);
         //$.log(`\n本次阅读获得${share.data.score}个金币🏅\n`);
         //sharescore += share.data.score;
+        if(logs==1) $.log(data)
         $.log(`分享任务奖励请求：成功🎉`);
         resolve()
       })
@@ -325,9 +326,11 @@ function sharereward(task) {
       $.post(sharerewardurl, async (error, resp, data) => {
         let sharereward = JSON.parse(data);
         if (sharereward.code === 1007) {
+          if(logs==1) $.log(data)
           $.log(`【分享奖励】：账号异常❌\n请评论,点赞,上传视频...并禁用脚本观察`)
           tz += `【分享奖励】：账号异常❌\n`;
         } else {
+          if(logs==1) $.log(data)
           $.log(`本次任务获得${sharereward.data.score}个金币🏅`);
           tz += `【分享任务】：${sharescore}个金币\n`;
           sharescore += sharereward.data.score;
@@ -406,15 +409,6 @@ function AutoRead() {
 }
 
 // prettier-ignore
-function Jsname(){
-
-$.log(`┎━━┰┒┎┰━━┰━━┰━━┰┒┎┰┒┎┰━━┒`)
-$.log(`│┎━┦┕┚│┎┒│┎┒│┎┰┦┕┚││││┎┒│`)
-$.log(`│┕━┦┎┒│┕┚││││┕┚│┎┒│┕┚│┎┒│`)
-$.log(`┕━━┹┚┕┹━━┹┚┕┹━━┹┚┕┹━━┹┚┕┚`)
-
-}
-
 function Env(t, e) {
   class s {
     constructor(t) {
@@ -753,3 +747,4 @@ function Env(t, e) {
     }
   }(t, e)
 }
+
