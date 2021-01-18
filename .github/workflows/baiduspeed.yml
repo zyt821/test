@@ -1,4 +1,4 @@
-name: 百度极速版LZF
+name: 百度极速版ZL
 on:
   workflow_dispatch:
   schedule:
