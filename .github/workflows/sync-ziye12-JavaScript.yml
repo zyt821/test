@@ -23,6 +23,6 @@ jobs:
         if: env.PAT
         with:
           source_repo: "https://github.com/ziye12/JavaScript.git"
-          source_branch: "master"
+          source_branch: "main"
           destination_branch: "sync-ziye12-JavaScript"
           github_token: ${{ secrets.ZYT }}
