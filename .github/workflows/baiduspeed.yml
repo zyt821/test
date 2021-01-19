@@ -2,7 +2,7 @@ name: 百度极速版LZF
 on:
   workflow_dispatch:
   schedule:
-     - cron: '33 6-22/1 * * *'
+     - cron: '33 6-19/1 * * *'
   watch:
     types: started
 jobs:
