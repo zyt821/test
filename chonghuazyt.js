@@ -358,7 +358,7 @@ function timered(task) {
         } else {
           if(logs==1) $.log(data)
           $.log(`【时段奖励】：获取${timered.data.score}金币`);
-          $.log(`【下个时段】：`+ time(nexttime));
+          //$.log(`【下个时段】：`+ time(nexttime));
           tz += `【时段奖励】：${timered.data.score}金币\n`;
         }
 
