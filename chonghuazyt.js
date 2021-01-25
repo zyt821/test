@@ -83,7 +83,7 @@ let bodys4 = process.env.CHGETBODY_SHAREREWARD;
 let bodys5 = process.env.CHGETBODY_TIMERED;
 let indexLast = $.getdata('chgetbody_video_index');
 
-$.begin = indexLast ? parseInt(indexLast, 10) : 1;
+$.begin = indexLast ? parseInt(indexLast, 10) : 0;
 
 
 if (!(bodys && bodys != '')) {
@@ -98,6 +98,9 @@ if (!(bodys2 && bodys2 != '')) {
 
 readbodyVal = bodys.split('#');
 sharebodyVal = bodys2.split('#');
+taskcenterbodyVal = bodys3.split('#');
+sharerewardbodyVal = bodys4.split('#');
+timeredbodyVal = bodys5.split('#');
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -140,7 +143,16 @@ Object.keys(sharebodyVal).forEach((item) => {
  // sharerewardbodyArr.push(process.env.CHGETBODY_SHAREREWARD);
   //timeredbodyArr.push(process.env.CHGETBODY_TIMERED);
 //}
-
+//console.log(readbodyArr)
+//console.log(`\n`)
+//console.log(sharebodyArr)
+ // console.log(`\n`)
+//console.log(taskcenterbodyArr)
+////console.log(`\n`)
+//console.log(sharerewardbodyArr)
+//  console.log(`\n`)
+//console.log(timeredbodyArr)
+//console.log(`\n`)
 
 ////////////////////////////////////////////////////////////////////////
 
