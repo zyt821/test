@@ -25,7 +25,7 @@ jobs:
           npm install
       - name: '运行 【葱花视频zyt】'
         run: |
-          node chonghuazyt.js
+          node chonghua123zyt.js
         env:
           CHGETBODY_VIDEO: ${{ secrets.CHGETBODY_VIDEO }}
           CHGETBODY_SHARE: ${{ secrets.CHGETBODY_SHARE }}
