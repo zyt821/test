@@ -82,7 +82,7 @@ let bodys3 = process.env.CHGETBODY_TASKCENTER;
 let bodys4 = process.env.CHGETBODY_SHAREREWARD;
 let bodys5 = process.env.CHGETBODY_TIMERED;
 let indexLast = $.getdata('chgetbody_video_index');
-
+$.msg("", "", bodys);
 $.begin = indexLast ? parseInt(indexLast, 10) : 0;
 
 
