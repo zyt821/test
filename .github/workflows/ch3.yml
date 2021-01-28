@@ -7,7 +7,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: chonghuazyt.js
+    types: chonghua
 jobs:
   build:
 
@@ -23,9 +23,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【葱花视频】'
+      - name: '运行 【葱花视频lzf】'
         run: |
-          node chonghuazyt.js
+          node chonghua128lzf.js
         env:
           CHGETBODY_VIDEO: ${{ secrets.CHGETBODY_VIDEO3 }}
           CHGETBODY_SHARE: ${{ secrets.CHGETBODY_SHARE3 }}
