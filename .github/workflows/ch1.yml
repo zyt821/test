@@ -3,7 +3,7 @@ name: 葱花视频一
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6-23 * * *'
+    - cron: '0 1-23 * * *'
   watch:
     types: started
   repository_dispatch:
