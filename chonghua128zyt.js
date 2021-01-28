@@ -51,6 +51,7 @@ const $ = Env(jsname)
 const logs = 1; //0为关闭日志，1为开启
 const notify = $.isNode() ? require('./sendNotify') : '';
 const notifyInterval = 1 //0为关闭通知，1为所有通知
+now = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000);
 
 let task = '';
 let tz = '';
