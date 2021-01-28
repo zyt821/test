@@ -221,10 +221,10 @@ Object.keys(sharebodyVal).forEach((item) => {
 
   console.log(`\n✅ 执行时段奖励任务`)
   await timered(task); //时段奖励
-  if (now.getHours() >= 10 && now.getHours() <= 12){
+  //if (now.getHours() >= 10 && now.getHours() <= 12){
     await videoread();//自动刷视频
     await sharevideo();//分享任务
-  }
+  //}
   await showmsg();
 
 })()
