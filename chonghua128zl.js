@@ -216,7 +216,7 @@ Object.keys(sharebodyVal).forEach((item) => {
     );
   }
 
-  if (hour == 8 || hour == 12 || hour == 23) {
+  if (hour == 8 || hour == 12 || hour == 22) {
     await videoread(); //自动刷视频
   }else if(hour <= 17) {
     console.log(`\n✅ 打印任务状态清单`)
